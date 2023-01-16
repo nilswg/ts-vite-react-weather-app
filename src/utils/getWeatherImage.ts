@@ -18,7 +18,8 @@ const getWeatherImage = (
     throw Error("weather svg doesn't exit.");
   }
   const wx = weatherIcon.Wx;
-  return `/img/weathers/${wx}_${type}.svg`;
+  const res = `/img/weathers/${wx}_${type}.svg`;
+  return new URL(res, import.meta.url).href;
 };
 
 export default getWeatherImage;

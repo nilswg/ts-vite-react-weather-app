@@ -4,7 +4,7 @@ import { AiFillGithub } from 'react-icons/ai';
 
 const GithubLink = () => {
   return (
-    <GithubLinkContainer href="/">
+    <GithubLinkContainer href="/ts-vite-react-weather-app">
       {/* <img src={GithubIcon} alt="github logo" /> */}
       <AiFillGithub />
     </GithubLinkContainer>
