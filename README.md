@@ -2,15 +2,23 @@
 
 This is a weather app for learning purposes and built with React and Vite, written in Typescript.
 
+<br>
 
 ## 🐱‍🏍 Skills
 React, Vite, TypeScript, @reduxjs/toolkit, Styled-components, SWR.
 
+<br>
+
+## 🚀 <a href="https://nilswg.github.io/ts-react-weather-app/">Demo Website</a>
+click link to see demo.
+
+<br>
 
 ## ✨ Showcase 
 ![ts-vite-react-react-weather_1](https://user-images.githubusercontent.com/64550861/212832292-dca37e44-5fde-4711-a806-ad2bbd3589e1.gif)
 ![ts-vite-react-react-weather_2](https://user-images.githubusercontent.com/64550861/212832300-af2d60f7-b0f5-4afd-b6b6-39642027cdde.gif)
 
+<br>
 
 ## 🛫 Quick start
 
@@ -18,6 +26,7 @@ React, Vite, TypeScript, @reduxjs/toolkit, Styled-components, SWR.
 
 ```npm run dev```
 
+<br>
 
 ## 🚀 Deployment
 
@@ -27,6 +36,7 @@ React, Vite, TypeScript, @reduxjs/toolkit, Styled-components, SWR.
 
 ```npm run deploy:github```
 
+<br>
 
 ## ⚠ CAUTION
 
