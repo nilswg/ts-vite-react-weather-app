@@ -4,14 +4,12 @@ export interface AppState {
   darkMode: boolean;
   loading: boolean;
   cityName: string;
-  searchInput: string;
 }
 
 const initialState: AppState = {
   darkMode: JSON.parse(localStorage.getItem('dark_mode') ?? 'false') as boolean,
   loading: false,
   cityName: '',
-  searchInput: '',
 };
 
 const reducers = {
