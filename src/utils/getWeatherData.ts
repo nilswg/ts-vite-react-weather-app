@@ -1,5 +1,4 @@
-import { ElementValue, WeatherData } from '@/types';
-
+import type { ElementValue, WeatherData, WeatherResponse } from '@/types';
 
 /**
  * 處理後的 WeatherData 範例 :
@@ -33,42 +32,31 @@ import { ElementValue, WeatherData } from '@/types';
  * @param idx 代表不同時段的資料
  * @returns 處理後的 weatherData 資料
  */
-export const fetcher = (url: string) =>
-  fetch(url).then((res) =>
-    res.json().then((data) => {
-      /**天氣因子 */
-      const weatherElements =
-        data.records.locations[0].location[0].weatherElement;
+export const fetcher = async (url: string): Promise<WeatherData[]> => {
+  const mp = new Map<string, WeatherData>();
+  const data: WeatherResponse = await (await fetch(url)).json();
+  const weatherElements = data.records.locations[0].location[0].weatherElement;
 
-      const mp = new Map<string, any>();
-      const weathers: WeatherData[] = [];
+  for (let ei = 0; ei < 15; ei++) {
+    for (let t = 0; t < 15; t++) {
+      const we = weatherElements?.[ei];
+      const tm = we.time?.[t];
+      /**
+       * 可能某些資料筆數非15筆，如 UVI只有早上時段
+       */
+      if (!we || !tm) continue;
+      const ele: WeatherData = mp.get(tm.startTime) ?? {
+        startTime: tm.startTime,
+        endTime: tm.endTime,
+        data: {},
+      };
+      ele.data[we.elementName] = { ...tm.elementValue[0] };
+      mp.set(tm.startTime, ele);
+    }
+  }
 
-      for (let ei = 0; ei < 15; ei++) {
-        for (let t = 0; t < 15; t++) {
-          const we = weatherElements?.[ei];
-          const tm = we.time?.[t];
-          /**
-           * 可能某些資料筆數非15筆，如 UVI只有早上時段
-           */
-          if (!we || !tm) continue;
-          if (!mp.has(tm.startTime)) {
-            const temp = {
-              startTime: tm.startTime,
-              endTime: tm.endTime,
-              data: {},
-            };
-            mp.set(tm.startTime, temp);
-          }
-          mp.get(tm.startTime).data[we.elementName] = {
-            ...tm.elementValue[0],
-          };
-        }
-      }
-      mp.forEach((x) => weathers.push(x));
-      return weathers;
-    })
-  );
-
+  return Array.from(mp.values());
+};
 /**
  *
  * @param weatherData 經過 fetcher 處理過後的 weatherData 資料
@@ -78,7 +66,3 @@ export const getValue = (
   weatherData: { data: { [key: string]: ElementValue } },
   keyName: string
 ): string => weatherData?.data?.[keyName]?.value;
-
-
-
-

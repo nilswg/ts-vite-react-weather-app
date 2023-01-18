@@ -1,3 +1,5 @@
+export * from './weatherResponse';
+
 export type LocationData = {
   id: string;
   cityName: string;
@@ -7,21 +9,22 @@ export type WeatherData = {
   startTime: string;
   endTime: string;
   data: {
-    PoP12h: ElementValue;
-    T: ElementValue;
-    RH: ElementValue;
-    MinCI: ElementValue;
-    WS: ElementValue;
-    MaxAT: ElementValue;
-    Wx: ElementValue;
-    MaxCI: ElementValue;
-    MinT: ElementValue;
-    UVI: ElementValue;
-    WeatherDescription: ElementValue;
-    MinAT: ElementValue;
-    MaxT: ElementValue;
-    WD: ElementValue;
-    Td: ElementValue;
+    [x: string]: ElementValue;
+    // PoP12h?: ElementValue;
+    // T?: ElementValue;
+    // RH?: ElementValue;
+    // MinCI?: ElementValue;
+    // WS?: ElementValue;
+    // MaxAT?: ElementValue;
+    // Wx?: ElementValue;
+    // MaxCI?: ElementValue;
+    // MinT?: ElementValue;
+    // UVI?: ElementValue;
+    // WeatherDescription?: ElementValue;
+    // MinAT?: ElementValue;
+    // MaxT?: ElementValue;
+    // WD?: ElementValue;
+    // Td?: ElementValue;
   };
 };
 
