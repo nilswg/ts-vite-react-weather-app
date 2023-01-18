@@ -10,6 +10,7 @@ type Props = {
   humidity: number;
   minTempCels: number;
   maxTempCels: number;
+  rainPosibility: string;
 };
 
 const Weather = ({
@@ -20,11 +21,12 @@ const Weather = ({
   humidity,
   minTempCels,
   maxTempCels,
+  rainPosibility,
 }: Props) => {
   return (
     <div className="weather-card">
       <div className="weather-card-left">
-        <h2>{weatherName}</h2>
+        <h2>{weatherName} <span>{`/ 降雨機率: ${rainPosibility}%`}</span></h2>
         <div className="weather-card-left-icon">
           <img src={weatherIcon} alt={`the image of ${weatherName}`} />
           <h1>{`${tempCels}°`}</h1>

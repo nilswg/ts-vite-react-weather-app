@@ -43,7 +43,7 @@ const SearchWeathers = ({ cityName }: Props) => {
     const weatherName = getValue(wd, 'Wx');
     const weatherIcon = getWeatherImage(weatherName);
     const tempCels = parseFloat(getValue(wd, 'T'));
-    const humidity = parseFloat(getValue(wd, 'PoP12h'));
+    const humidity = parseFloat(getValue(wd, 'RH'));
     const minTempCels = parseFloat(getValue(wd, 'MinT'));
     const maxTempCels = parseFloat(getValue(wd, 'MaxT'));
 
@@ -59,7 +59,7 @@ const SearchWeathers = ({ cityName }: Props) => {
   }
 
   const selected = weathers[0];
-
+  const rainPosibility = getValue(data[0], 'PoP12h');
   // Only Debug
 
   // return (
@@ -73,7 +73,7 @@ const SearchWeathers = ({ cityName }: Props) => {
     <div>
       <WeatherContainer>
         <WeatherTitle>{`Weather Today ${selected.date} - ${cityName}`}</WeatherTitle>
-        <WeatherCard {...selected} />
+        <WeatherCard {...selected} rainPosibility={rainPosibility}/>
       </WeatherContainer>
       <ForecastContainer>
         <ForeCastDays>{`Following 7 Days Forecast`}</ForeCastDays>
