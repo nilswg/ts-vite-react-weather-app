@@ -22,19 +22,45 @@ click link to see demo.
 
 ## 🛫 Quick start
 
-```npm install```
+```bash
+npm install
+```
 
-```npm run dev```
+<br>
+
+First, get your api key from here. 🏛 https://opendata.cwb.gov.tw/user/authkey
+
+The API is provided from Central Weather Service in Taiwan.
+
+So, I think it should be free forever.
+
+<br>
+
+Then, create `.env` file in your project and add api key like below.
+```bash
+// @file .env
+VITE_WEATHER_API_KEY=CWB-89A1C3A1-6A42-45A4-A870-F6A41EFF7BF3
+```
+
+<br>
+
+```bash
+npm run dev
+```
 
 <br>
 
 ## 🚀 Deployment
 
-採用 gh-pages 部署專案。
+I use gh-pages to deploy my project.
 
-```npm run  build ```
+```bash
+npm run build
+```
 
-```npm run deploy:github```
+```bash
+npm run deploy:github
+```
 
 <br>
 
@@ -93,3 +119,10 @@ const getWeatherImage = (
   return new URL(res, import.meta.url).href;
 };
 ```
+
+<br>
+
+## 🤔 SEE MORE
+More, you can get more technical notes from <a href="https://gratis-number-79a.notion.site/ts-vite-react-weather-app-890e33ccc3d2486bb23ae58519950870">here</a>
+
+
