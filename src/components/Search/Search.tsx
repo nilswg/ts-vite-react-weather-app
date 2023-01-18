@@ -16,8 +16,6 @@ const Search = () => {
   );
 
   const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handleInputValue', e.target.value);
-    console.log(import.meta.env.VITE_WEATHER_API_KEY);
     setSearchInput(e.target.value);
   };
   const onInputChangedDebounced = useDebounce(handleInputValue, 250, []);
