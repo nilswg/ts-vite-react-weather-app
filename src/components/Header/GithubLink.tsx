@@ -1,5 +1,5 @@
 // import GithubIcon from '../../assets/github.svg';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { AiFillGithub } from 'react-icons/ai';
 
 const GithubLink = () => {
@@ -20,5 +20,9 @@ const GithubLinkContainer = styled.a`
   }
   &:hover svg {
     color: ${({ theme }) => theme.githubIcon.hoverColor};
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
   }
 `;

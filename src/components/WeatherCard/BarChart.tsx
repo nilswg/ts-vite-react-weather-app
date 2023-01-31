@@ -19,22 +19,28 @@ export const BarChart = (props: { min: UIBarData; max: UIBarData }) => {
   const { distance: distance1, colors: colors1 } = props.min;
   const { distance: distance2, colors: colors2 } = props.max;
   return (
-    <>
-      <BarChartContainer>
+    <BarChartContainer>
+      <BarChartSection>
         <Number color={colors1[1]}>{distance1}°</Number>
         <MinBar height={distance1 * 2} colors={colors1} />
-      </BarChartContainer>
-      <BarChartContainer>
+      </BarChartSection>
+      <BarChartSection>
         <MaxBar height={distance2 * 2} colors={colors2} />
         <Number color={colors2[1]}>{distance2}°</Number>
-      </BarChartContainer>
-    </>
+      </BarChartSection>
+    </BarChartContainer>
   );
 };
 
 export default BarChart;
 
 const BarChartContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: none;
+`
+
+const BarChartSection = styled.div`
   display: flex;
   align-items: center;
   background-color: var(--barChartbgColor);

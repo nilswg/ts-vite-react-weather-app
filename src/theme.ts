@@ -80,7 +80,7 @@ export const lightTheme: DefaultTheme = {
       bgColor: '#ffffff',
     },
     bars: {
-      bgColor: '#ffffff',
+      bgColor: 'none',
     },
   },
   forecast: {
@@ -121,7 +121,7 @@ export const darkTheme: DefaultTheme = {
       bgColor: '#051A33',
     },
     bars: {
-      bgColor: '#051A33',
+      bgColor: 'none',
     },
   },
   forecast: {

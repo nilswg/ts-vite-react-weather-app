@@ -43,8 +43,8 @@ export default SwitchBtn;
 
 const Container = styled.label<SwitchButtonThemeProps>`
   --width: ${(props) => props.width || "2rem"};
-  --height: calc(var(--width) / 2);
-  --radius: calc(var(--height) / 2);
+  --height: calc(var(props.width) / 2);
+  --radius: calc(var(props.width) / 2);
   --beforeColor: ${(props) => props.beforeColor || "#ddd"};
   --afterColor: ${(props) => props.afterColor || "#34deeb"};
   --ballColor: ${(props) => props.ballColor || "#fff"};
@@ -81,5 +81,14 @@ const ToogleFill = styled.div<{ checked: boolean }>`
     transform: ${(props) =>
       props.checked ? `translateX(110%)` : `translateX(0%)`};
     transition: transform 0.5s;
+  }
+
+  @media (min-width: 768px) {
+    --width: 4rem;
+    --height: calc(var(--width) / 2);
+    --radius: calc(var(--height) / 2);
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--radius);
   }
 `;

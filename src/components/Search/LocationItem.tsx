@@ -1,5 +1,6 @@
-import { useDispatch } from '@/store';
-import { setLoading, setCityName } from '@/store';
+import { setSearchInput, useDispatch } from '@/store';
+import { setCityName } from '@/store';
+import styled from 'styled-components/macro';
 
 interface LocationItemProps {
   id: string;
@@ -16,14 +17,31 @@ const LocationItem = (props: LocationItemProps) => {
   const onClick = () => {
     hiddenSearchResult();
     dispatch(setCityName(chName));
+    dispatch(setSearchInput(chName));
   };
 
   return (
-    <a className="search result item" id={id} onClick={onClick}>
+    <Location id={id} onClick={onClick}>
       <span>{`${id} - ${chName}`}</span>
       <span>{enName}</span>
-    </a>
+    </Location>
   );
 };
 
 export default LocationItem;
+
+const Location = styled.a`
+  width: 9em;
+  color: var(--resultItemColor);
+  text-decoration: none;
+  /* background-color: red; */
+  padding: 0.6rem 0;
+  border-bottom: 1px dotted var(--seperatorColor);
+  cursor: pointer;
+
+  & > span {
+    width: 10rem;
+    display: flex;
+    justify-content: start;
+  }
+`;

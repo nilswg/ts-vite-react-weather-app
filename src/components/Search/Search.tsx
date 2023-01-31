@@ -1,9 +1,13 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import styled from 'styled-components/macro';
-import { useDispatch } from '@/store';
+import {
+  selectSearchInput,
+  setSearchInput,
+  useDispatch,
+  useSelector,
+} from '@/store';
 import useDebounce from '@/hooks/useDebounce';
-import Locations from './Locations';
-import './search.css';
+import SearchResults from './SearchResults';
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -29,24 +33,22 @@ const Search = () => {
 
   return (
     <SearchContainer>
-      <div className="search">
-        <div className="search inputvalue">
+      <SearchContext>
+        <SearchBar>
           <input
             type="text"
-            className="search bar"
-            placeholder="Type your location (๑•̀ㅂ•́)و✧ "
+            placeholder="Type Location (๑•̀ㅂ•́)و✧"
             onChange={onInputChangedDebounced}
           />
-        </div>
-        <div className="search result">
-          {searchResultVisible && (
-            <Locations
-              searchInput={searchInput}
-              hiddenSearchResult={hiddenSearchResult}
-            />
-          )}
-        </div>
-      </div>
+        </SearchBar>
+
+        {searchResultVisible && (
+          <SearchResults
+            searchInput={searchInput}
+            hiddenSearchResult={hiddenSearchResult}
+          />
+        )}
+      </SearchContext>
     </SearchContainer>
   );
 };
@@ -63,4 +65,31 @@ const SearchContainer = styled.div`
   --resultItemHoverBgColor: ${({ theme }) =>
     theme.search.result.item.hoverBgColor};
   --seperatorColor: ${({ theme }) => theme.search.result.seperator.color};
+`;
+const SearchContext = styled.div`
+  min-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const SearchBar = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  & > input {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    background-color: var(--searchBgColor);
+    color: var(--searchInputColor);
+  }
+
+  & > input::placeholder {
+    color: var(--searchInputPlaceHolderColor);
+  }
 `;

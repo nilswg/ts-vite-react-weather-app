@@ -72,8 +72,12 @@ const SearchWeathers = ({ cityName }: Props) => {
   return (
     <div>
       <WeatherContainer>
-        <WeatherTitle>{`Weather Today ${selected.date} - ${cityName}`}</WeatherTitle>
-        <WeatherCard {...selected} rainPosibility={rainPosibility}/>
+        <WeatherToday>{`Weather Today`}</WeatherToday>
+        <div>
+          <WeatherLocation>{`${cityName}`}</WeatherLocation>
+          <WeatherDate>{`${selected.date}`}</WeatherDate>
+        </div>
+        <WeatherCard {...selected} rainPosibility={rainPosibility} />
       </WeatherContainer>
       <ForecastContainer>
         <ForeCastDays>{`Following 7 Days Forecast`}</ForeCastDays>
@@ -88,18 +92,58 @@ const WeatherContainer = styled.div`
   --weatherTitleColor: ${({ theme }) => theme.weather.title};
   --pieChartbgColor: ${({ theme }) => theme.weather.pie.bgColor};
   --barChartbgColor: ${({ theme }) => theme.weather.bars.bgColor};
-  width: 100%;
+
   height: 100%;
   background-color: var(--weatherbgColor);
   margin-top: 20px;
   padding: 1rem;
   border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
 `;
 
-const WeatherTitle = styled.h1`
-  margin: 0 0 1rem 1rem;
-  font-weight: 500;
-  font-size: 1.125rem;
+const WeatherToday = styled.h1`
+  width: 100%;
+  display: inline-block;
+  margin: 3rem 0 6rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: var(--weatherTitleColor);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+
+  @media (min-width: 360px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 640px) {
+    font-size: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 2.75rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+  @media (min-width: 1536px) {
+    font-size: 3.5rem;
+  }
+`;
+
+const WeatherLocation = styled.h1`
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 1.75rem;
+  letter-spacing: 0.35rem;
+  color: var(--weatherTitleColor);
+`;
+
+const WeatherDate = styled.h1`
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.25rem;
   color: var(--weatherTitleColor);
 `;
 
@@ -107,7 +151,6 @@ const ForecastContainer = styled.div`
   --forecastbgColor: ${({ theme }) => theme.forecast.bgColor};
   --forecastTitleColor: ${({ theme }) => theme.forecast.title};
 
-  width: 100%;
   background-color: var(--forecastbgColor);
   border-radius: 1rem;
   padding: 1rem;
@@ -115,10 +158,41 @@ const ForecastContainer = styled.div`
 `;
 
 const ForeCastDays = styled.h1`
-  margin: 0 0 1rem 1rem;
-  font-weight: 300;
-  font-size: 1.125rem;
+  display: inline-block;
+  margin: 3rem 0 6rem;
+  font-weight: 600;
+  max-width: 16rem;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
   color: var(--forecastTitleColor);
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+
+  @media (min-width: 360px) {
+    max-width: 16rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    max-width: 20rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  @media (min-width: 768px) {
+    max-width: 20rem;
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+  }
+  @media (min-width: 1024px) {
+    max-width: 36rem;
+    font-size: 3rem;
+    line-height: 4.25rem;
+  }
+  @media (min-width: 1536px) {
+    max-width: 64rem;
+    font-size: 3.5rem;
+    line-height: 4.25rem;
+  }
 `;
 
 export default SearchWeathers;
