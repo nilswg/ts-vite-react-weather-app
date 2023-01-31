@@ -9,7 +9,7 @@ React, Vite, TypeScript, @reduxjs/toolkit, Styled-components, SWR.
 
 <br>
 
-## 🚀 <a href="https://nilswg.github.io/ts-react-weather-app/">Demo Website</a>
+## 🚀 <a href="https://nilswg.github.io/ts-vite-react-weather-app/">Demo Website</a>
 click link to see demo.
 
 <br>
