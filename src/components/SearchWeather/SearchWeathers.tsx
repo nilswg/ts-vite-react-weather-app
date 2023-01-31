@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import getWeatherImage from '@/utils/getWeatherImage';
 import getDate from '@/utils/getDate';
 import { fetcher, getValue } from '@/utils/getWeatherData';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import RocketLoading from '../RocketLoading/RocketLoading';
 
 type Props = {

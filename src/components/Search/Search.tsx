@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { useDispatch } from '@/store';
 import useDebounce from '@/hooks/useDebounce';
 import Locations from './Locations';

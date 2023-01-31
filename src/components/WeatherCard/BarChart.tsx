@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 // https://medium.com/swlh/how-to-build-a-simple-and-interactive-bar-chart-with-react-js-and-css-in-js-6d48f0924d25
 

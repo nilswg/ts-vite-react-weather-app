@@ -1,7 +1,7 @@
 import SwitchBtn from "./SwtchBtn";
 import GithubLink from "./GithubLink";
 import { useDispatch, setDarkMode } from "@/store";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Header = () => {
   const dispatch = useDispatch();

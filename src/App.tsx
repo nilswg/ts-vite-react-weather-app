@@ -2,7 +2,7 @@ import Header from '@/components/Header/Header';
 import RocketLoading from '@/components/RocketLoading/RocketLoading';
 import Search from '@/components/Search/Search';
 import { useSelector } from 'react-redux';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components/macro';
 import SearchWeathers from './components/SearchWeather/SearchWeathers';
 import { selectCityName, selectDarkMode, selectLoading } from './store';
 import { darkTheme, lightTheme } from './theme';

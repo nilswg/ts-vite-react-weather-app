@@ -1,11 +1,11 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components/macro';
 
 import lightBg from '/img/bg.svg';
 import darkBg from '/img/darkBg.svg';
 
 // and extend them!
-// 參考 : https://styled-components.com/docs/api#create-a-declarations-file
-declare module 'styled-components' {
+// 參考 : https://styled-components/macro.com/docs/api#create-a-declarations-file
+declare module 'styled-components/macro' {
   export interface DefaultTheme {
     backgroundImage: string;
     backgroundGradient: string[];

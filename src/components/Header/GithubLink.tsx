@@ -1,5 +1,5 @@
 // import GithubIcon from '../../assets/github.svg';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { AiFillGithub } from 'react-icons/ai';
 
 const GithubLink = () => {
