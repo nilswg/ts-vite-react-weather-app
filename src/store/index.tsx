@@ -4,11 +4,15 @@ import AppSlice from './appSlice';
 /**
  * app state
  */
-export const { setDarkMode, setLoading, setCityName } = AppSlice.actions;
+export const { setSearchInput, setDarkMode, setLoading, setCityName } =
+  AppSlice.actions;
 
 /**
  * selectors
  */
+export const selectSearchInput = (state: RootState) => {
+  return state.app.searchInput;
+};
 export const selectCityName = (state: RootState) => {
   return state.app.cityName;
 };

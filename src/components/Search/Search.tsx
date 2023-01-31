@@ -10,7 +10,14 @@ import useDebounce from '@/hooks/useDebounce';
 import SearchResults from './SearchResults';
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState('');
+  const searchInput = useSelector(selectSearchInput);
+  const ref = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (!ref?.current) return;
+    ref.current.value = searchInput;
+  }, [ref, searchInput]);
+
   const [searchResultVisible, setSearchResultVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,7 +27,7 @@ const Search = () => {
   );
 
   const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
+    dispatch(setSearchInput(e.target.value));
   };
   const onInputChangedDebounced = useDebounce(handleInputValue, 250, []);
 
@@ -36,6 +43,7 @@ const Search = () => {
       <SearchContext>
         <SearchBar>
           <input
+            ref={ref}
             type="text"
             placeholder="Type Location (๑•̀ㅂ•́)و✧"
             onChange={onInputChangedDebounced}
