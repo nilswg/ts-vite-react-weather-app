@@ -2,7 +2,9 @@ import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import styled from 'styled-components/macro';
 import {
   selectSearchInput,
+  selectSearchResultVisible,
   setSearchInput,
+  setSearchResultVisible,
   useDispatch,
   useSelector,
 } from '@/store';
@@ -18,25 +20,23 @@ const Search = () => {
     ref.current.value = searchInput;
   }, [ref, searchInput]);
 
-  const [searchResultVisible, setSearchResultVisible] = useState(false);
+  const searchResultVisible = useSelector(selectSearchResultVisible);
   const dispatch = useDispatch();
 
   const hiddenSearchResult = useCallback(
-    () => setSearchResultVisible(false),
-    [setSearchResultVisible]
+    () => dispatch(setSearchResultVisible(false)),
+    [dispatch, setSearchResultVisible]
   );
 
   const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchInput(e.target.value));
+    dispatch(setSearchResultVisible(true));
   };
   const onInputChangedDebounced = useDebounce(handleInputValue, 250, []);
 
   useEffect(() => {
-    if (!searchInput) {
-      return;
-    }
-    setSearchResultVisible(true);
-  }, [dispatch, searchInput]);
+    dispatch(setSearchResultVisible(searchResultVisible));
+  }, [dispatch, searchInput, setSearchResultVisible]);
 
   return (
     <SearchContainer>

@@ -22,8 +22,10 @@ const LocationItem = (props: LocationItemProps) => {
 
   return (
     <Location id={id} onClick={onClick}>
-      <span>{`${id} - ${chName}`}</span>
-      <span>{enName}</span>
+      <Content>
+        <span>{`${id} - ${chName}`}</span>
+        <span>{enName}</span>
+      </Content>
     </Location>
   );
 };
@@ -31,16 +33,20 @@ const LocationItem = (props: LocationItemProps) => {
 export default LocationItem;
 
 const Location = styled.a`
-  width: 9em;
+  width: 100%;
+  border-bottom: 1px dotted var(--seperatorColor);
   color: var(--resultItemColor);
   text-decoration: none;
-  /* background-color: red; */
   padding: 0.6rem 0;
-  border-bottom: 1px dotted var(--seperatorColor);
   cursor: pointer;
 
+  display: flex;
+  justify-content: center;
+`;
+
+const Content = styled.div`
+  width: 9rem;
   & > span {
-    width: 10rem;
     display: flex;
     justify-content: start;
   }

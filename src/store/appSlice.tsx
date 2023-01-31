@@ -5,6 +5,7 @@ export interface AppState {
   loading: boolean;
   cityName: string;
   searchInput: string;
+  searchResultVisible: boolean;
 }
 
 const initialState: AppState = {
@@ -12,6 +13,7 @@ const initialState: AppState = {
   loading: false,
   cityName: '',
   searchInput: '',
+  searchResultVisible: false,
 };
 
 const reducers = {
@@ -27,6 +29,9 @@ const reducers = {
   },
   setSearchInput: (state: AppState, action: { payload: string }) => {
     state.searchInput = action.payload;
+  },
+  setSearchResultVisible: (state: AppState, action: { payload: boolean }) => {
+    state.searchResultVisible = action.payload;
   },
 };
 
